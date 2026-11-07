@@ -1,0 +1,47 @@
+# Chrome Web Store listing
+
+Package: `python scripts/build_extension.py` → `dist/book-spine-calculator-extension.zip` (also attached to GitHub release v1.0.0).
+
+## Store item
+- **Name (from manifest, EN):** Book Spine Width Calculator & ISBN Barcode – Shelf Publisher
+- **Name (DE):** Buchrücken-Rechner & ISBN-Barcode – Shelf Publisher
+- **Category:** Tools
+- **Language:** English (German via `_locales/de`)
+- **Homepage:** https://orbita-media.github.io/book-spine-calculator/
+- **Support URL:** https://github.com/Orbita-Media/book-spine-calculator/issues
+- **Images:** `icons/icon128.png`, `store/screenshot-1-spine-1280x800.png`, `store/screenshot-2-isbn-1280x800.png`, small promo tile `store/promo-tile-440x280.png`
+
+## Description (EN)
+Work out the spine width and the full cover size of your paperback before you design the cover, and create the ISBN barcode for the back.
+
+- Spine width from page count, trim size and paper, in millimetres and inches
+- Full cover size with bleed: back cover, spine and front cover side by side
+- Safe area, whether the spine can carry text, and where the barcode field goes
+- ISBN-13 barcode (EAN-13) as a vector SVG, with an optional 5-digit price add-on; ISBN-10 is converted automatically
+
+The figures are the print specifications Shelf Publisher uses to check every cover on upload, for international and European print on demand. Other printers can differ by fractions of a millimetre, so build the final cover on your printer's template.
+
+No sign-in, no tracking, no network requests: everything is calculated inside the popup. Open source: https://github.com/Orbita-Media/book-spine-calculator
+
+## Beschreibung (DE)
+Rückenbreite und Umschlaggröße deines Taschenbuchs ausrechnen, bevor du den Umschlag gestaltest, und den ISBN-Barcode für die Rückseite erzeugen.
+
+- Rückenbreite aus Seitenzahl, Format und Papier, in Millimetern und Zoll
+- Umschlaggröße mit Beschnitt: Rückseite, Rücken und Vorderseite nebeneinander
+- Sicherheitsabstand, ob Schrift auf den Rücken darf und wohin das Barcodefeld kommt
+- ISBN-13-Barcode (EAN-13) als Vektorgrafik (SVG), mit optionalem fünfstelligem Preis-Zusatz; eine ISBN-10 wird automatisch umgerechnet
+
+Die Werte sind die Druckvorgaben, mit denen Shelf Publisher jeden Umschlag beim Hochladen prüft, für den internationalen und den europäischen Druck auf Bestellung. Andere Druckereien können um Bruchteile eines Millimeters abweichen; den endgültigen Umschlag auf der Vorlage der eigenen Druckerei bauen.
+
+Ohne Anmeldung, ohne Tracking, ohne Netzwerkzugriff: Alles wird im Popup berechnet. Quellcode: https://github.com/Orbita-Media/book-spine-calculator
+
+## Privacy practices (developer dashboard)
+- **Single purpose:** Calculate the spine width and cover size of a paperback and generate its ISBN barcode.
+- **Permissions:** none requested (no host permissions, no content scripts, no storage).
+- **Remote code:** no.
+- **Data usage:** the extension does not collect or transmit any user data. All boxes "not collected".
+- **Privacy policy URL:** https://shelfpublisher.com/legal/privacy
+
+## Publisher
+- Developer account: Orbita Media GmbH (one-time registration fee 5 USD, paid by card in the Chrome Web Store developer dashboard)
+- Contact e-mail: an Orbita Media address
