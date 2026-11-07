@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://orbita-media.github.io/book-spine-calculator/sitemap.xml

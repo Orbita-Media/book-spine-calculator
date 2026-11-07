@@ -27,7 +27,7 @@
       cta: "Publishing your paperback? [Shelf Publisher](https://shelfpublisher.com/?utm_source=github&utm_medium=tool&utm_campaign=spine-calculator) checks spine, bleed and barcode on upload and lists your book in catalogs 50,000+ bookstores order from.",
     },
     de: {
-      tabCover: "Rücken & Umschlag", tabIsbn: "ISBN-Barcode",
+      tabCover: "Buchrücken", tabIsbn: "ISBN-Barcode",
       pages: "Seitenzahl", trim: "Format", paper: "Papier", unit: "Einheit",
       spine: "Buchrücken", cover: "Umschlag mit Beschnitt", bleed: "Beschnitt", safe: "Sicherheitsabstand",
       safeVal: "{v} innerhalb von Schnitt und Falz", spineText: "Rückentext",
@@ -199,7 +199,7 @@
       if (L2.pages < L2.minPages) warn.push(fill(T.tooFew, { n: L2.minPages }));
       if (L2.pages > L2.maxPages) warn.push(fill(T.tooMany, { n: L2.maxPages }));
       const bc = L2.barcode;
-      results.replaceChildren(
+      results.replaceChildren(...[
         el("div", { class: "hero" }, el("span", { class: "hero-l" }, T.spine), el("strong", { class: "hero-v" }, both(L2.spineMm))),
         el("dl", { class: "facts" },
           el("dt", null, T.cover), el("dd", null, `${len(L2.coverWidthMm)} × ${len(L2.coverHeightMm)}`),
@@ -211,7 +211,7 @@
             s: len(bc.marginSpineMm), b: len(bc.marginBottomMm) }))),
         warn.length ? el("p", { class: "warn" }, warn.join(" ")) : null,
         el("figure", { class: "fig" }, diagram(L2),
-          el("figcaption", null, el("span", null, T.back), el("span", null, T.spineShort), el("span", null, T.front))));
+          el("figcaption", null, el("span", null, T.back), el("span", null, T.spineShort), el("span", null, T.front)))].filter(Boolean));
     }
     renderResults();
     return el("div", { class: "pane" }, inputs, results);
@@ -261,7 +261,7 @@
       el("span", { class: "knob", "aria-hidden": "true" }), el("span", null, T.line));
     update();
     return el("div", { class: "pane" },
-      el("div", { class: "inputs" },
+      el("div", { class: "inputs isbn-in" },
         el("div", { class: "field wide" }, el("label", { for: "isbn" }, T.isbn), isbnIn),
         el("div", { class: "field" }, el("label", { for: "addon" }, T.addon), addonIn),
         el("div", { class: "field sw" }, sw)),
