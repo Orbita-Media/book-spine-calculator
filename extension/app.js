@@ -71,7 +71,8 @@
     return frag;
   };
   const num = (x, d) => lang === "de" ? x.toFixed(d).replace(".", ",") : x.toFixed(d);
-  const len = (mm) => state.unit === "mm" ? `${num(mm, mm < 100 ? 2 : 1)} mm` : `${num(mm / 25.4, 3)} in`;
+  const mmDigits = (mm) => (Math.abs(mm * 100 - Math.round(mm * 100)) < 1e-6 ? 2 : 3);
+  const len = (mm) => state.unit === "mm" ? `${num(mm + 1e-9, mmDigits(mm))} mm` : `${num(mm / 25.4 + 1e-9, 3)} in`;
   const both = (mm) => state.unit === "mm" ? `${num(mm, 2)} mm · ${num(mm / 25.4, 3)} in` : `${num(mm / 25.4, 3)} in · ${num(mm, 2)} mm`;
   const fmtLabel = (f) => f.label.replace(/ x /g, " × ");
 
