@@ -43,5 +43,8 @@ Ohne Anmeldung, ohne Tracking, ohne Netzwerkzugriff: Alles wird im Popup berechn
 - **Privacy policy URL:** https://shelfpublisher.com/legal/privacy
 
 ## Publisher
-- Developer account: Orbita Media GmbH (one-time registration fee 5 USD, paid by card in the Chrome Web Store developer dashboard)
-- Contact e-mail: an Orbita Media address
+- Developer account: Orbita Media GmbH (Google account kontakt@orbita-media.de, publisher ID 89cecae7-b072-4478-a49e-38b6529ba849), trader declared and verified via the Google payments profile of Orbita Media GmbH
+- Contact e-mail (public): kontakt@orbita-media.de
+- Official URL: shelfpublisher.com (verified site)
+- Item ID: cklbcmnmdbppgflochaigdpjpddencbl, store page after approval: https://chromewebstore.google.com/detail/cklbcmnmdbppgflochaigdpjpddencbl
+- Submitted for review on 2026-11-09 with version 1.0.1, published automatically after approval
