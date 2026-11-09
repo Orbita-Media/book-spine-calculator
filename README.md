@@ -13,7 +13,7 @@ Nothing is sent anywhere: no cookies, no tracking, no network requests. The same
 
 ## Where the figures come from
 
-The spine and cover figures are the print specifications of [Shelf Publisher](https://shelfpublisher.com/?utm_source=github&utm_medium=readme&utm_campaign=spine-calculator) for international and European print on demand – the same catalogue its portal uses to check every cover on upload (spine table page by page for white 50 lb paper, paper caliper otherwise, cover bleed and spine allowance per print route). `scripts/export_data.py` exports them, and `tests/calc.test.js` checks the calculator against 230 layouts computed by the portal itself.
+The spine and cover figures are the print specifications of [ShelfPublisher](https://shelfpublisher.com/?utm_source=github&utm_medium=readme&utm_campaign=spine-calculator) for international and European print on demand – the same catalogue its portal uses to check every cover on upload (spine table page by page for white 50 lb paper, paper caliper otherwise, cover bleed and spine allowance per print route). `scripts/export_data.py` exports them, and `tests/calc.test.js` checks the calculator against 230 layouts computed by the portal itself.
 
 | Book | Paper | Spine | Full cover with bleed |
 |---|---|---|---|
@@ -42,6 +42,6 @@ python scripts/build_extension.py               # dist/book-spine-calculator-ext
 ## Related
 
 - [Publishing guides 2027](https://orbita-media.github.io/publishing-guides-2027/) – free presentations: how to get your book into bookstores, how to stop ebook piracy on Shopify, publishing a book as a creator
-- [Shelf Publisher](https://shelfpublisher.com/get-your-book-into-bookstores?utm_source=github&utm_medium=readme&utm_campaign=spine-calculator) – your paperback under a publishing house imprint, listed in the catalogs 50,000+ bookstores order from
+- [ShelfPublisher](https://shelfpublisher.com/get-your-book-into-bookstores?utm_source=github&utm_medium=readme&utm_campaign=spine-calculator) – your paperback under a publishing house imprint, listed in the catalogs 50,000+ bookstores order from
 
-Made by Shelf Publisher, Orbita Media GmbH, Hamburg. Code: MIT licence. Fonts (Sora, Manrope): SIL Open Font License.
+Made by ShelfPublisher, Orbita Media GmbH, Hamburg. Code: MIT licence. Fonts (Sora, Manrope): SIL Open Font License.

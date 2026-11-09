@@ -24,7 +24,7 @@
         prefix: "An ISBN-13 starts with 978 or 979.", check13: "Check digit does not match – it should be {e}.", check10: "Check digit does not match – it should be {e}." },
       addonErr: "The add-on has exactly 5 digits.",
       groups: { international: "International print", europa: "European print" },
-      cta: "Publishing your paperback? [Shelf Publisher](https://shelfpublisher.com/?utm_source=github&utm_medium=tool&utm_campaign=spine-calculator) checks spine, bleed and barcode on upload and lists your book in catalogs 50,000+ bookstores order from.",
+      cta: "Publishing your paperback? [ShelfPublisher](https://shelfpublisher.com/?utm_source=github&utm_medium=tool&utm_campaign=spine-calculator) checks spine, bleed and barcode on upload and lists your book in catalogs 50,000+ bookstores order from.",
     },
     de: {
       tabCover: "Buchrücken", tabIsbn: "ISBN-Barcode",
@@ -42,7 +42,7 @@
         prefix: "Eine ISBN-13 beginnt mit 978 oder 979.", check13: "Prüfziffer stimmt nicht – richtig wäre {e}.", check10: "Prüfziffer stimmt nicht – richtig wäre {e}." },
       addonErr: "Der Zusatz hat genau 5 Ziffern.",
       groups: { international: "Internationaler Druck", europa: "Europäischer Druck" },
-      cta: "Du veröffentlichst dein Taschenbuch? [Shelf Publisher](https://shelfpublisher.com/de/?utm_source=github&utm_medium=tool&utm_campaign=spine-calculator) prüft Rücken, Beschnitt und Barcode beim Hochladen und listet dein Buch in den Katalogen, aus denen über 50.000 Buchhandlungen bestellen.",
+      cta: "Du veröffentlichst dein Taschenbuch? [ShelfPublisher](https://shelfpublisher.com/de/?utm_source=github&utm_medium=tool&utm_campaign=spine-calculator) prüft Rücken, Beschnitt und Barcode beim Hochladen und listet dein Buch in den Katalogen, aus denen über 50.000 Buchhandlungen bestellen.",
     },
   }[lang];
 

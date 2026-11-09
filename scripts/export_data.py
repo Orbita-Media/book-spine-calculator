@@ -1,6 +1,6 @@
-"""Export the print specifications of Shelf Publisher for the calculator.
+"""Export the print specifications of ShelfPublisher for the calculator.
 
-Reads the catalogue that the Shelf Publisher portal uses for its own cover
+Reads the catalogue that the ShelfPublisher portal uses for its own cover
 templates and upload checks (app/services/formats.py in the Publishing
 Platform repo) and writes:
 
@@ -43,7 +43,7 @@ def main() -> None:
     formats = [fm for fm in F.FORMATS if fm.angeboten]
     data = {
         "updated": dt.date.today().isoformat(),
-        "source": "Shelf Publisher print specifications (shelfpublisher.com)",
+        "source": "ShelfPublisher print specifications (shelfpublisher.com)",
         "channels": {},
         "papers": [],
         "formats": [],

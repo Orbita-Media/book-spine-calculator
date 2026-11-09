@@ -1,5 +1,5 @@
 // node tests/calc.test.js – compares the calculator with results computed by
-// the Shelf Publisher portal itself (tests/vectors.json, scripts/export_data.py).
+// the ShelfPublisher portal itself (tests/vectors.json, scripts/export_data.py).
 const assert = require("assert");
 const DATA = require("../docs/data.js");
 const C = require("../docs/calc.js");

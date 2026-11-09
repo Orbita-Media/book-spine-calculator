@@ -1,5 +1,5 @@
 {
-  "name": {"message": "Buchrücken-Rechner & ISBN-Barcode – Shelf Publisher"},
+  "name": {"message": "Buchrücken-Rechner & ISBN-Barcode – ShelfPublisher"},
   "short": {"message": "Buchrücken-Rechner"},
   "desc": {"message": "Rückenbreite, Umschlaggröße mit Beschnitt und ISBN-Barcode für dein Taschenbuch. Ohne Anmeldung, keine Datenerhebung."}
 }

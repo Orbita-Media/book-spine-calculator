@@ -18,9 +18,9 @@
 <link rel="stylesheet" href="../app.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"WebApplication","name":"Buchrücken-Rechner","url":"https://orbita-media.github.io/book-spine-calculator/de/","applicationCategory":"UtilitiesApplication","operatingSystem":"Alle (Webbrowser)","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Berechnet Rückenbreite und Umschlaggröße eines Taschenbuchs aus Seitenzahl, Format und Papier und erzeugt einen ISBN-13-Barcode als SVG.","publisher":{"@type":"Organization","name":"Shelf Publisher","url":"https://shelfpublisher.com/de/"}},
+{"@type":"WebApplication","name":"Buchrücken-Rechner","url":"https://orbita-media.github.io/book-spine-calculator/de/","applicationCategory":"UtilitiesApplication","operatingSystem":"Alle (Webbrowser)","inLanguage":"de","offers":{"@type":"Offer","price":"0","priceCurrency":"EUR"},"description":"Berechnet Rückenbreite und Umschlaggröße eines Taschenbuchs aus Seitenzahl, Format und Papier und erzeugt einen ISBN-13-Barcode als SVG.","publisher":{"@type":"Organization","name":"ShelfPublisher","url":"https://shelfpublisher.com/de/"}},
 {"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"Wie berechnet man die Rückenbreite eines Buches?","acceptedAnswer":{"@type":"Answer","text":"Seitenzahl mal Dicke einer Seite des gewählten Papiers, dazu der Zuschlag für den Umschlag, den manche Druckwege rechnen. Ein A5-Taschenbuch mit 300 Seiten auf weißem 90-g-Papier hat im europäischen Druck von Shelf Publisher einen Rücken von 18,60 mm."}},
+{"@type":"Question","name":"Wie berechnet man die Rückenbreite eines Buches?","acceptedAnswer":{"@type":"Answer","text":"Seitenzahl mal Dicke einer Seite des gewählten Papiers, dazu der Zuschlag für den Umschlag, den manche Druckwege rechnen. Ein A5-Taschenbuch mit 300 Seiten auf weißem 90-g-Papier hat im europäischen Druck von ShelfPublisher einen Rücken von 18,60 mm."}},
 {"@type":"Question","name":"Warum muss die Seitenzahl gerade sein?","acceptedAnswer":{"@type":"Answer","text":"Jedes Blatt hat zwei Seiten, deshalb wird immer eine gerade Seitenzahl gebunden. Eine ungerade Zahl wird aufgerundet, und der Rücken gilt für die aufgerundete Zahl."}},
 {"@type":"Question","name":"Wie groß ist der Umschlag eines A5-Taschenbuchs?","acceptedAnswer":{"@type":"Answer","text":"Rückseite plus Rücken plus Vorderseite plus Beschnitt an allen Seiten. Mit 300 Seiten auf weißem 90-g-Papier und 5 mm Beschnitt sind das 324,60 × 220,00 mm."}},
 {"@type":"Question","name":"Was bedeutet die fünfstellige Zusatzzahl neben dem ISBN-Barcode?","acceptedAnswer":{"@type":"Answer","text":"Ein optionaler Preiscode, vor allem für den US-Handel. Die erste Ziffer nennt die Währung (5 für US-Dollar), die übrigen vier den Preis: 52495 heißt 24,95 $. 90000 heißt: kein Preis angegeben."}}]}]}
@@ -28,7 +28,7 @@
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><span class="brand">Shelf Publisher · Kostenlose Werkzeuge</span><a href="../" hreflang="en">English</a></nav>
+<nav class="top"><span class="brand">ShelfPublisher · Kostenlose Werkzeuge</span><a href="../" hreflang="en">English</a></nav>
 <h1>Buchrücken-Rechner 2027</h1>
 <p class="sub">Rückenbreite, Umschlaggröße mit Beschnitt und ein druckfertiger ISBN-Barcode für dein Taschenbuch. Kostenlos, ohne Anmeldung, nichts verlässt deinen Browser.</p>
 
@@ -37,7 +37,7 @@
 <article>
 <h2>Wie berechnet man die Rückenbreite eines Buches?</h2>
 <p><strong>Rückenbreite = Seitenzahl × Dicke einer Seite</strong>, dazu der Zuschlag für den Umschlag, den manche Druckwege rechnen. Die Seitenzahl ist immer gerade, weil jedes Blatt zwei Seiten hat; eine ungerade Zahl wird aufgerundet. Das Papier bestimmt die Dicke je Seite: Dasselbe Buch hat auf Creme-Papier einen breiteren Rücken als auf weißem.</p>
-<p>Der Rechner nutzt die Druckvorgaben von <a href="https://shelfpublisher.com/de/?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">Shelf Publisher</a> für den internationalen und den europäischen Druck auf Bestellung – dieselben Werte, mit denen das Portal jeden Umschlag beim Hochladen prüft. Für weißes 50-lb-Papier liest er die Rückentabelle des Druckers Seite für Seite, statt mit einem gerundeten Mittelwert zu rechnen.</p>
+<p>Der Rechner nutzt die Druckvorgaben von <a href="https://shelfpublisher.com/de/?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">ShelfPublisher</a> für den internationalen und den europäischen Druck auf Bestellung – dieselben Werte, mit denen das Portal jeden Umschlag beim Hochladen prüft. Für weißes 50-lb-Papier liest er die Rückentabelle des Druckers Seite für Seite, statt mit einem gerundeten Mittelwert zu rechnen.</p>
 <div class="tw"><table>
 <thead><tr><th>Buch</th><th>Papier</th><th>Rückenbreite</th><th>Umschlag mit Beschnitt</th></tr></thead>
 <tbody>
@@ -65,15 +65,15 @@
 <h3>Ist der Barcode druckfertig?</h3>
 <p>Er ist als Vektorgrafik in EAN-Nenngröße (0,33 mm je Modul) gezeichnet, schwarz auf weiß. Auf ein weißes Feld in 100 % Größe setzen und nicht verzerren.</p>
 <h3>Wer prüft meinen Umschlag vor dem Druck?</h3>
-<p>Wenn du mit <a href="https://shelfpublisher.com/de/?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">Shelf Publisher</a> veröffentlichst, prüft das Portal beim Hochladen Seitengröße, Beschnitt, Rückenbreite und die ISBN im Barcode und sagt dir, was vor der Freigabe noch zu ändern ist.</p>
+<p>Wenn du mit <a href="https://shelfpublisher.com/de/?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">ShelfPublisher</a> veröffentlichst, prüft das Portal beim Hochladen Seitengröße, Beschnitt, Rückenbreite und die ISBN im Barcode und sagt dir, was vor der Freigabe noch zu ändern ist.</p>
 </section>
 
 <h2>Dein Taschenbuch in den Buchhandel</h2>
-<p>Shelf Publisher veröffentlicht dein Taschenbuch im Imprint von Orbita Media und listet es in den Katalogen der Großhändler, aus denen über 50.000 Buchhandlungen in 18 Ländern bestellen – gedruckt auf Bestellung. <a href="https://shelfpublisher.com/de/buch-in-den-buchhandel?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">So funktioniert es</a> · <a href="https://orbita-media.github.io/publishing-guides-2027/buch-in-den-buchhandel-bringen-2027/">Ratgeber: Buch in den Buchhandel bringen 2027</a></p>
+<p>ShelfPublisher veröffentlicht dein Taschenbuch im Imprint von Orbita Media und listet es in den Katalogen der Großhändler, aus denen über 50.000 Buchhandlungen in 18 Ländern bestellen – gedruckt auf Bestellung. <a href="https://shelfpublisher.com/de/buch-in-den-buchhandel?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">So funktioniert es</a> · <a href="https://orbita-media.github.io/publishing-guides-2027/buch-in-den-buchhandel-bringen-2027/">Ratgeber: Buch in den Buchhandel bringen 2027</a></p>
 </article>
 
 <footer>
-<p>Werte: Druckvorgaben von Shelf Publisher, Stand 7. November 2026. Diese Seite setzt keine Cookies, lädt nichts von fremden Servern und speichert keine Eingaben. Gehostet auf GitHub Pages (<a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung von GitHub</a>).</p>
+<p>Werte: Druckvorgaben von ShelfPublisher, Stand 7. November 2026. Diese Seite setzt keine Cookies, lädt nichts von fremden Servern und speichert keine Eingaben. Gehostet auf GitHub Pages (<a href="https://docs.github.com/de/site-policy/privacy-policies/github-general-privacy-statement">Datenschutzerklärung von GitHub</a>).</p>
 <p>© 2026 Orbita Media GmbH, Hamburg · <a href="https://shelfpublisher.com/legal/imprint">Impressum</a> · <a href="https://shelfpublisher.com/legal/privacy">Datenschutz</a> · <a href="https://github.com/Orbita-Media/book-spine-calculator">Quellcode auf GitHub</a></p>
 </footer>
 </div>

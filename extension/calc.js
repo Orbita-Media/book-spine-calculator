@@ -1,5 +1,5 @@
 /* Book spine width, cover size and ISBN barcode - calculation core.
- * Same arithmetic as the Shelf Publisher portal (app/services/formats.py),
+ * Same arithmetic as the ShelfPublisher portal (app/services/formats.py),
  * checked against its own results in tests/calc.test.js.
  * No network access, no storage. */
 (function (root) {

@@ -18,9 +18,9 @@
 <link rel="stylesheet" href="app.css">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@graph":[
-{"@type":"WebApplication","name":"Book Spine Width Calculator","url":"https://orbita-media.github.io/book-spine-calculator/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculates the spine width and full cover size of a paperback from page count, trim size and paper, and draws an ISBN-13 barcode as SVG.","publisher":{"@type":"Organization","name":"Shelf Publisher","url":"https://shelfpublisher.com"}},
+{"@type":"WebApplication","name":"Book Spine Width Calculator","url":"https://orbita-media.github.io/book-spine-calculator/","applicationCategory":"UtilitiesApplication","operatingSystem":"Any (web browser)","inLanguage":"en","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Calculates the spine width and full cover size of a paperback from page count, trim size and paper, and draws an ISBN-13 barcode as SVG.","publisher":{"@type":"Organization","name":"ShelfPublisher","url":"https://shelfpublisher.com"}},
 {"@type":"FAQPage","mainEntity":[
-{"@type":"Question","name":"How do I calculate the spine width of a book?","acceptedAnswer":{"@type":"Answer","text":"Multiply the number of pages by the thickness of one page of your paper, and add the cover allowance your printer uses. A 220-page paperback on white 50 lb paper has a spine of 11.80 mm (0.465 in) in Shelf Publisher's international print specification."}},
+{"@type":"Question","name":"How do I calculate the spine width of a book?","acceptedAnswer":{"@type":"Answer","text":"Multiply the number of pages by the thickness of one page of your paper, and add the cover allowance your printer uses. A 220-page paperback on white 50 lb paper has a spine of 11.80 mm (0.465 in) in ShelfPublisher's international print specification."}},
 {"@type":"Question","name":"Why does my page count have to be even?","acceptedAnswer":{"@type":"Answer","text":"Every sheet has two sides, so printers always bind an even number of pages. An odd page count is rounded up, and the spine is calculated for the rounded number."}},
 {"@type":"Question","name":"How wide is the full cover of a 6 x 9 inch paperback?","acceptedAnswer":{"@type":"Answer","text":"Back cover plus spine plus front cover plus bleed on both sides. With 220 pages on white 50 lb paper and 0.125 in bleed that is 322.95 x 234.95 mm (12.715 x 9.250 in)."}},
 {"@type":"Question","name":"What does the 5-digit add-on next to an ISBN barcode mean?","acceptedAnswer":{"@type":"Answer","text":"It is an optional price code. The first digit names the currency (5 for US dollars), the other four the price: 52495 means $24.95. 90000 means no price is given."}}]}]}
@@ -28,7 +28,7 @@
 </head>
 <body>
 <div class="wrap">
-<nav class="top"><span class="brand">Shelf Publisher · Free tools</span><a href="de/" hreflang="de">Deutsch</a></nav>
+<nav class="top"><span class="brand">ShelfPublisher · Free tools</span><a href="de/" hreflang="de">Deutsch</a></nav>
 <h1>Book spine width calculator 2027</h1>
 <p class="sub">Spine width, full cover size with bleed and a print-ready ISBN barcode for your paperback. Free, no sign-up, nothing leaves your browser.</p>
 
@@ -37,7 +37,7 @@
 <article>
 <h2>How is the spine width of a book calculated?</h2>
 <p><strong>Spine width = number of pages × thickness of one page</strong>, plus the cover allowance some printers add. The page count is always even, because every sheet has two sides; an odd count is rounded up. The paper decides the thickness per page, so the same book on cream paper has a wider spine than on white.</p>
-<p>The calculator uses the print specifications of <a href="https://shelfpublisher.com/?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">Shelf Publisher</a> for international and European print on demand, the same figures its portal uses to check every cover on upload. For white 50 lb paper it reads the printer's spine table page by page instead of multiplying a rounded average.</p>
+<p>The calculator uses the print specifications of <a href="https://shelfpublisher.com/?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">ShelfPublisher</a> for international and European print on demand, the same figures its portal uses to check every cover on upload. For white 50 lb paper it reads the printer's spine table page by page instead of multiplying a rounded average.</p>
 <div class="tw"><table>
 <thead><tr><th>Book</th><th>Paper</th><th>Spine width</th><th>Full cover with bleed</th></tr></thead>
 <tbody>
@@ -65,15 +65,15 @@
 <h3>Is the barcode print-ready?</h3>
 <p>It is drawn as vectors at nominal EAN size (0.33 mm per module), black on white. Place it on a white field at 100 % size and do not stretch it.</p>
 <h3>Who checks my cover before printing?</h3>
-<p>If you publish with <a href="https://shelfpublisher.com/how-it-works?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">Shelf Publisher</a>, the portal checks page size, bleed, spine width and the ISBN in the barcode on upload and tells you what to fix before the release check.</p>
+<p>If you publish with <a href="https://shelfpublisher.com/how-it-works?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">ShelfPublisher</a>, the portal checks page size, bleed, spine width and the ISBN in the barcode on upload and tells you what to fix before the release check.</p>
 </section>
 
 <h2>Get your paperback into bookstores</h2>
-<p>Shelf Publisher publishes your paperback under the imprint of Orbita Media and lists it in the wholesale catalogs that more than 50,000 bookstores in 18 countries order from, printed on demand. <a href="https://shelfpublisher.com/get-your-book-into-bookstores?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">How it works</a> · <a href="https://orbita-media.github.io/publishing-guides-2027/how-to-get-your-book-into-bookstores-2027/">Guide: how to get your book into bookstores in 2027</a></p>
+<p>ShelfPublisher publishes your paperback under the imprint of Orbita Media and lists it in the wholesale catalogs that more than 50,000 bookstores in 18 countries order from, printed on demand. <a href="https://shelfpublisher.com/get-your-book-into-bookstores?utm_source=github&amp;utm_medium=tool&amp;utm_campaign=spine-calculator">How it works</a> · <a href="https://orbita-media.github.io/publishing-guides-2027/how-to-get-your-book-into-bookstores-2027/">Guide: how to get your book into bookstores in 2027</a></p>
 </article>
 
 <footer>
-<p>Figures: Shelf Publisher print specifications, as of 7 November 2026. This page sets no cookies, loads nothing from other servers and stores nothing you enter. Hosted on GitHub Pages (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub privacy statement</a>).</p>
+<p>Figures: ShelfPublisher print specifications, as of 7 November 2026. This page sets no cookies, loads nothing from other servers and stores nothing you enter. Hosted on GitHub Pages (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">GitHub privacy statement</a>).</p>
 <p>© 2026 Orbita Media GmbH, Hamburg · <a href="https://shelfpublisher.com/legal/imprint">Imprint</a> · <a href="https://shelfpublisher.com/legal/privacy">Privacy</a> · <a href="https://github.com/Orbita-Media/book-spine-calculator">Source on GitHub</a></p>
 </footer>
 </div>

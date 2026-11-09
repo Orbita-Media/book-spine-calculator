@@ -3,8 +3,8 @@
 Package: `python scripts/build_extension.py` → `dist/book-spine-calculator-extension.zip` (also attached to GitHub release v1.0.0).
 
 ## Store item
-- **Name (from manifest, EN):** Book Spine Width Calculator & ISBN Barcode – Shelf Publisher
-- **Name (DE):** Buchrücken-Rechner & ISBN-Barcode – Shelf Publisher
+- **Name (from manifest, EN):** Book Spine Width Calculator & ISBN Barcode – ShelfPublisher
+- **Name (DE):** Buchrücken-Rechner & ISBN-Barcode – ShelfPublisher
 - **Category:** Tools
 - **Language:** English (German via `_locales/de`)
 - **Homepage:** https://orbita-media.github.io/book-spine-calculator/
@@ -19,7 +19,7 @@ Work out the spine width and the full cover size of your paperback before you de
 - Safe area, whether the spine can carry text, and where the barcode field goes
 - ISBN-13 barcode (EAN-13) as a vector SVG, with an optional 5-digit price add-on; ISBN-10 is converted automatically
 
-The figures are the print specifications Shelf Publisher uses to check every cover on upload, for international and European print on demand. Other printers can differ by fractions of a millimetre, so build the final cover on your printer's template.
+The figures are the print specifications ShelfPublisher uses to check every cover on upload, for international and European print on demand. Other printers can differ by fractions of a millimetre, so build the final cover on your printer's template.
 
 No sign-in, no tracking, no network requests: everything is calculated inside the popup. Open source: https://github.com/Orbita-Media/book-spine-calculator
 
@@ -31,7 +31,7 @@ Rückenbreite und Umschlaggröße deines Taschenbuchs ausrechnen, bevor du den U
 - Sicherheitsabstand, ob Schrift auf den Rücken darf und wohin das Barcodefeld kommt
 - ISBN-13-Barcode (EAN-13) als Vektorgrafik (SVG), mit optionalem fünfstelligem Preis-Zusatz; eine ISBN-10 wird automatisch umgerechnet
 
-Die Werte sind die Druckvorgaben, mit denen Shelf Publisher jeden Umschlag beim Hochladen prüft, für den internationalen und den europäischen Druck auf Bestellung. Andere Druckereien können um Bruchteile eines Millimeters abweichen; den endgültigen Umschlag auf der Vorlage der eigenen Druckerei bauen.
+Die Werte sind die Druckvorgaben, mit denen ShelfPublisher jeden Umschlag beim Hochladen prüft, für den internationalen und den europäischen Druck auf Bestellung. Andere Druckereien können um Bruchteile eines Millimeters abweichen; den endgültigen Umschlag auf der Vorlage der eigenen Druckerei bauen.
 
 Ohne Anmeldung, ohne Tracking, ohne Netzwerkzugriff: Alles wird im Popup berechnet. Quellcode: https://github.com/Orbita-Media/book-spine-calculator
 
