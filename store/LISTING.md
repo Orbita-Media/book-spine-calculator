@@ -1,6 +1,6 @@
 # Chrome Web Store listing
 
-Package: `python scripts/build_extension.py` → `dist/book-spine-calculator-extension.zip` (also attached to GitHub release v1.0.0).
+Package: `python scripts/build_extension.py` → `dist/book-spine-calculator-extension.zip` (attached to GitHub release v1.0.1, the version submitted to the store).
 
 ## Store item
 - **Name (from manifest, EN):** Book Spine Width Calculator & ISBN Barcode – ShelfPublisher
@@ -9,7 +9,7 @@ Package: `python scripts/build_extension.py` → `dist/book-spine-calculator-ext
 - **Language:** English (German via `_locales/de`)
 - **Homepage:** https://orbita-media.github.io/book-spine-calculator/
 - **Support URL:** https://github.com/Orbita-Media/book-spine-calculator/issues
-- **Images:** `icons/icon128.png`, `store/screenshot-1-spine-1280x800.png`, `store/screenshot-2-isbn-1280x800.png`, small promo tile `store/promo-tile-440x280.png`
+- **Images:** `icons/icon128.png`, screenshots `store/screenshot-1-spine-<lang>-1280x800.png` and `store/screenshot-2-isbn-<lang>-1280x800.png` (EN for the default listing, DE for the German one; rendered from the real popup with `python scripts/store_screenshots.py`), small promo tile `store/promo-tile-440x280.png`
 
 ## Description (EN)
 Work out the spine width and the full cover size of your paperback before you design the cover, and create the ISBN barcode for the back.
