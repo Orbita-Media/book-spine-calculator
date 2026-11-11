@@ -39,4 +39,26 @@ assert.strictEqual(C.addon5Modules("52495").length, 47);
 assert.strictEqual(C.isbnLabel("978-3-98935-318-3", "9783989353183"), "ISBN 978-3-98935-318-3");
 assert.strictEqual(C.isbnLabel("9783989353183", "9783989353183"), "ISBN 9783989353183");
 
-console.log(`ok: ${n} layouts equal to the portal, ISBN and barcode checks passed`);
+// PNG download: pixel size at 1200 dpi from the size in mm, resolution written into the file.
+const svg = C.barcodeSvg("9783989353183", { addon: "51999" });
+const mmW = parseFloat(svg.match(/ width="([\d.]+)mm"/)[1]);
+const r = C.svgForRaster(svg, 1200);
+assert.strictEqual(r.width, Math.round(mmW / 25.4 * 1200));
+assert.ok(r.svg.includes(` width="${r.width}"`) && r.svg.includes(` height="${r.height}"`) && !/="[\d.]+mm"/.test(r.svg));
+assert.strictEqual(C.crc32(Buffer.from("IEND")), 0xae426082);
+// 1x1 PNG (IHDR, IDAT, IEND) with a 72 dpi pHYs chunk that must be replaced by 1200 dpi.
+const tiny = Buffer.from("89504e470d0a1a0a0000000d4948445200000001000000010806000000" +
+  "1f15c4890000000970485973000002e8000002e801000000000000000d49444154789c63f8ffff3f0005fe02fe0def46b8" +
+  "0000000049454e44ae426082", "hex");
+const out = Buffer.from(C.pngWithDpi(new Uint8Array(tiny), 1200));
+assert.strictEqual(out.toString("hex", 0, 33), tiny.toString("hex", 0, 33));
+assert.strictEqual(out.toString("latin1").split("pHYs").length - 1, 1);
+const p = out.indexOf(Buffer.from("pHYs"));
+assert.strictEqual(p, 37);
+assert.strictEqual(out.readUInt32BE(p + 4), 47244);
+assert.strictEqual(out.readUInt32BE(p + 8), 47244);
+assert.strictEqual(out[p + 12], 1);
+assert.strictEqual(out.readUInt32BE(p + 13), C.crc32(out.subarray(p, p + 13)));
+assert.ok(out.toString("latin1").endsWith("IEND\xaeB`\x82"));
+
+console.log(`ok: ${n} layouts equal to the portal, ISBN, barcode and PNG checks passed`);

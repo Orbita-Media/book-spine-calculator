@@ -193,8 +193,49 @@
     return parts.join("");
   }
 
+  // Same SVG with its size in pixels at `dpi`, so a canvas can draw it 1:1 for the PNG download.
+  function svgForRaster(svg, dpi) {
+    const mm = (name) => parseFloat(svg.match(new RegExp(`\\s${name}="([\\d.]+)mm"`))[1]);
+    const width = Math.round(mm("width") / MM_PER_IN * dpi), height = Math.round(mm("height") / MM_PER_IN * dpi);
+    const out = svg.replace(/\swidth="[\d.]+mm"/, ` width="${width}"`).replace(/\sheight="[\d.]+mm"/, ` height="${height}"`);
+    return { svg: out, width, height };
+  }
+
+  const CRC_TABLE = Array.from({ length: 256 }, (_, n) => {
+    let c = n;
+    for (let k = 0; k < 8; k++) c = c & 1 ? 0xedb88320 ^ (c >>> 1) : c >>> 1;
+    return c >>> 0;
+  });
+  function crc32(bytes) {
+    let c = 0xffffffff;
+    for (const b of bytes) c = CRC_TABLE[(c ^ b) & 0xff] ^ (c >>> 8);
+    return (c ^ 0xffffffff) >>> 0;
+  }
+
+  // Write the resolution into a PNG (pHYs chunk right after IHDR), so layout programs place the
+  // barcode at its true size. An existing pHYs chunk is replaced.
+  function pngWithDpi(png, dpi) {
+    const u32 = (n) => [(n >>> 24) & 255, (n >>> 16) & 255, (n >>> 8) & 255, n & 255];
+    const ppm = Math.round(dpi / 0.0254);
+    const body = [0x70, 0x48, 0x59, 0x73, ...u32(ppm), ...u32(ppm), 1];  // "pHYs", x, y, unit metre
+    const chunk = [...u32(9), ...body, ...u32(crc32(body))];
+    const parts = [png.slice(0, 33)];
+    let i = 33;
+    while (i < png.length) {
+      const len = ((png[i] << 24) | (png[i + 1] << 16) | (png[i + 2] << 8) | png[i + 3]) >>> 0;
+      const type = String.fromCharCode(png[i + 4], png[i + 5], png[i + 6], png[i + 7]);
+      if (type !== "pHYs") parts.push(png.slice(i, i + 12 + len));
+      i += 12 + len;
+    }
+    parts.splice(1, 0, Uint8Array.from(chunk));
+    const out = new Uint8Array(parts.reduce((s, p) => s + p.length, 0));
+    let o = 0;
+    for (const p of parts) { out.set(p, o); o += p.length; }
+    return out;
+  }
+
   const api = { spineMm, coverLayout, evenPages, parseIsbn, isbn13Check, isbn10Check, ean13Modules,
-    addon5Modules, addon5Check, barcodeSvg, isbnLabel, MM_PER_IN };
+    addon5Modules, addon5Check, barcodeSvg, isbnLabel, svgForRaster, pngWithDpi, crc32, MM_PER_IN };
   if (typeof module !== "undefined" && module.exports) module.exports = api;
   else root.SpineCalc = api;
 })(typeof self !== "undefined" ? self : this);

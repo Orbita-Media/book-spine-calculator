@@ -7,9 +7,14 @@ A free calculator for self-publishers and small publishers:
 - **Spine width** of a paperback from page count, trim size and paper (mm and inches)
 - **Full cover size** with bleed: back cover + spine + front cover, ready to set up your cover file
 - **Safe area, spine text rule and barcode field** on the back cover
-- **ISBN-13 barcode** (EAN-13, optional 5-digit price add-on) as a vector SVG; ISBN-10 is converted automatically
+- **ISBN-13 barcode** (EAN-13, optional 5-digit price add-on) as a vector SVG or a PNG at 1200 dpi; ISBN-10 is converted automatically
 
-Nothing is sent anywhere: no cookies, no tracking, no network requests. The same calculator ships as a Chrome extension (Manifest V3, popup only, no permissions) in [`extension/`](extension/).
+Nothing is sent anywhere: no cookies, no tracking, no network requests. The same code ships as two Chrome extensions (Manifest V3, popup only, no permissions):
+
+- [`extension/`](extension/): **Book Spine Width Calculator & ISBN Barcode – ShelfPublisher** ([Chrome Web Store](https://chromewebstore.google.com/detail/cklbcmnmdbppgflochaigdpjpddencbl))
+- [`extension-isbn/`](extension-isbn/): **ISBN Barcode Generator – ShelfPublisher**, the barcode on its own
+
+Both popups end with two links, to ShelfPublisher (publishing and distribution) and Bookfairy (tools to write the book, design the cover, find the blurb), with UTM parameters; nothing is loaded until you click.
 
 ## Where the figures come from
 
@@ -36,7 +41,8 @@ height = bleed + trim height + bleed
 ```
 python -m http.server --directory docs 8000     # web page
 node tests/calc.test.js                         # tests
-python scripts/build_extension.py               # dist/book-spine-calculator-extension.zip
+python scripts/build_extension.py               # both extensions -> dist/*-<version>.zip
+python scripts/store_assets.py                   # store screenshots, ISBN icons and promo tile from the real popups
 ```
 
 ## Related

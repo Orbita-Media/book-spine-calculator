@@ -1,0 +1,5 @@
+{
+  "name": {"message": "ISBN Barcode Generator – ShelfPublisher"},
+  "short": {"message": "ISBN Barcode Generator"},
+  "desc": {"message": "Create an ISBN barcode (EAN-13) for your book's back cover, with price add-on, as SVG or PNG. No sign-in, no data collected."}
+}

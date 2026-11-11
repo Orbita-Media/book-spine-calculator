@@ -8,4 +8,4 @@ body{width:420px;margin:0;background:#fff;font-size:15px}
 .inputs.isbn-in .field.wide,.inputs.isbn-in .field.sw{grid-column:1/-1}
 .results{grid-template-columns:1fr}
 .sel-list{max-height:260px}
-.cta{font-size:14px}
+.actions .btn{flex:1 1 auto;padding:0 16px}

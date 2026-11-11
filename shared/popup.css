@@ -1,0 +1,11 @@
+body{width:420px;margin:0;background:#fff;font-size:15px}
+.ph{display:flex;align-items:center;gap:8px;padding:12px 14px 0;font-family:var(--display);font-size:15px}
+#calc{border:0;box-shadow:none;border-radius:0;padding:12px 14px 14px}
+.inputs,.inputs.isbn-in{grid-template-columns:repeat(2,minmax(0,1fr))}
+.inputs .field:nth-child(4){order:1}
+.inputs .field:nth-child(2),.inputs .field:nth-child(3){order:2;grid-column:1/-1}
+.inputs.isbn-in .field{order:0}
+.inputs.isbn-in .field.wide,.inputs.isbn-in .field.sw{grid-column:1/-1}
+.results{grid-template-columns:1fr}
+.sel-list{max-height:260px}
+.actions .btn{flex:1 1 auto;padding:0 16px}

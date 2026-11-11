@@ -1,0 +1,5 @@
+{
+  "name": {"message": "ISBN-Barcode-Generator – ShelfPublisher"},
+  "short": {"message": "ISBN-Barcode-Generator"},
+  "desc": {"message": "ISBN-Barcode (EAN-13) für die Buchrückseite erstellen, mit Preis-Zusatz, als SVG oder PNG. Ohne Anmeldung, keine Datenerhebung."}
+}

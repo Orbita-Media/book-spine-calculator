@@ -1,4 +1,7 @@
-/* Book spine width calculator – user interface (web page and Chrome popup). */
+/* Book spine width calculator – user interface (web page and both Chrome popups).
+ * data-compact="1": popup layout, links open in a new tab.
+ * data-mode="isbn": ISBN barcode only (the "ISBN Barcode Generator" extension), no tabs.
+ * data-campaign="<name>": popup footer with ShelfPublisher and Bookfairy, UTM campaign <name>. */
 (function () {
   "use strict";
   const D = window.SPINE_DATA, C = window.SpineCalc;
@@ -6,6 +9,9 @@
   if (!root) return;
   const lang = (root.dataset.lang || document.documentElement.lang || navigator.language || "en").slice(0, 2) === "de" ? "de" : "en";
   const compact = root.dataset.compact === "1";
+  const isbnOnly = root.dataset.mode === "isbn";
+  const campaign = root.dataset.campaign || "";
+  const utm = (url, content) => `${url}?utm_source=chrome-extension&utm_medium=extension&utm_campaign=${campaign}&utm_content=${content}`;
 
   const T = {
     en: {
@@ -18,7 +24,12 @@
       even: "Printed as {n} pages (always an even number)", tooFew: "This paper needs at least {n} pages.",
       tooMany: "This paper takes at most {n} pages.", back: "Back", spineShort: "Spine", front: "Front",
       isbn: "ISBN", isbnPh: "978-3-98935-318-3", addon: "Price add-on (optional)", addonPh: "52495",
-      line: "ISBN line above the bars", download: "Download SVG",
+      line: "ISBN line above the bars", download: "Download SVG", downloadPng: "PNG (1200 dpi)",
+      title: "ISBN barcode generator", lead: "EAN-13 barcode for the back cover of your book, as SVG or PNG.",
+      promoHead: "More for your book",
+      promoShelf: "Publish your paperback and get it into the catalogs 50,000+ bookstores order from.",
+      promoFairy: "Write your book, design the cover, find the blurb. Free account: every tool first shows you a free preview of your own book.",
+      urlShelf: "https://shelfpublisher.com/", urlFairy: "https://getbookfairy.com/tools",
       okConv: "ISBN-10 converted to {v}", ok: "Valid ISBN-13",
       err: { empty: "Enter an ISBN-10 or ISBN-13.", length: "An ISBN has 10 or 13 digits.", format: "Only digits (and X at the end of an ISBN-10).",
         prefix: "An ISBN-13 starts with 978 or 979.", check13: "Check digit does not match – it should be {e}.", check10: "Check digit does not match – it should be {e}." },
@@ -36,7 +47,12 @@
       even: "Gedruckt als {n} Seiten (immer gerade Zahl)", tooFew: "Dieses Papier braucht mindestens {n} Seiten.",
       tooMany: "Dieses Papier trägt höchstens {n} Seiten.", back: "Rückseite", spineShort: "Rücken", front: "Vorderseite",
       isbn: "ISBN", isbnPh: "978-3-98935-318-3", addon: "Preis-Zusatz (optional)", addonPh: "52495",
-      line: "ISBN-Zeile über den Strichen", download: "SVG herunterladen",
+      line: "ISBN-Zeile über den Strichen", download: "SVG herunterladen", downloadPng: "PNG (1200 dpi)",
+      title: "ISBN-Barcode-Generator", lead: "EAN-13-Barcode für die Rückseite deines Buchs, als SVG oder PNG.",
+      promoHead: "Weiter mit deinem Buch",
+      promoShelf: "Taschenbuch veröffentlichen und in die Kataloge bringen, aus denen über 50.000 Buchhandlungen bestellen.",
+      promoFairy: "Buch schreiben, Cover gestalten, Klappentext finden. Kostenloses Konto: Jedes Werkzeug zeigt dir zuerst eine Gratis-Vorschau aus deinem Buch.",
+      urlShelf: "https://shelfpublisher.com/de/", urlFairy: "https://getbookfairy.com/de/werkzeuge",
       okConv: "ISBN-10 umgerechnet in {v}", ok: "Gültige ISBN-13",
       err: { empty: "ISBN-10 oder ISBN-13 eingeben.", length: "Eine ISBN hat 10 oder 13 Ziffern.", format: "Nur Ziffern (und X am Ende einer ISBN-10).",
         prefix: "Eine ISBN-13 beginnt mit 978 oder 979.", check13: "Prüfziffer stimmt nicht – richtig wäre {e}.", check10: "Prüfziffer stimmt nicht – richtig wäre {e}." },
@@ -47,7 +63,7 @@
   }[lang];
 
   const state = { pages: 220, format: "6x9", paper: "international_white_50", unit: lang === "de" ? "mm" : "in",
-    tab: "cover", isbn: "", addon: "", line: true };
+    tab: isbnOnly ? "isbn" : "cover", isbn: "", addon: "", line: true };
 
   const el = (tag, attrs, ...kids) => {
     const n = document.createElement(tag);
@@ -227,12 +243,13 @@
     const addonIn = el("input", { id: "addon", type: "text", inputmode: "numeric", maxlength: "5", autocomplete: "off",
       placeholder: T.addonPh, value: state.addon });
     const dl = el("button", { type: "button", class: "btn", disabled: true }, T.download);
-    let svgText = "", fileName = "isbn-barcode.svg";
+    const dlPng = el("button", { type: "button", class: "btn btn2", disabled: true }, T.downloadPng);
+    let svgText = "", fileName = "isbn-barcode";
     function update() {
       state.isbn = isbnIn.value; state.addon = addonIn.value.trim();
       const res = C.parseIsbn(state.isbn);
       const addonOk = !state.addon || /^\d{5}$/.test(state.addon);
-      out.replaceChildren(); svgText = ""; dl.disabled = true;
+      out.replaceChildren(); svgText = ""; dl.disabled = dlPng.disabled = true;
       msg.className = "msg";
       if (!state.isbn.trim()) { msg.textContent = ""; return; }
       if (!res.ok) { msg.textContent = fill(T.err[res.error], { e: res.expected }); msg.className = "msg bad"; return; }
@@ -241,19 +258,33 @@
       msg.className = "msg good";
       svgText = C.barcodeSvg(res.isbn13, { addon: state.addon || null, label: state.line,
         labelText: C.isbnLabel(res.converted ? res.isbn13 : state.isbn, res.isbn13) });
-      fileName = `isbn-${res.isbn13}${state.addon ? "-" + state.addon : ""}.svg`;
+      fileName = `isbn-${res.isbn13}${state.addon ? "-" + state.addon : ""}`;
       const holder = el("div", { class: "bc-img" });
       const doc = new DOMParser().parseFromString(svgText, "image/svg+xml");
       holder.append(document.importNode(doc.documentElement, true));
       out.append(holder);
-      dl.disabled = false;
+      dl.disabled = dlPng.disabled = false;
     }
-    dl.addEventListener("click", () => {
-      if (!svgText) return;
-      const url = URL.createObjectURL(new Blob([svgText], { type: "image/svg+xml" }));
-      const a = el("a", { href: url, download: fileName });
+    const save = (blob, name) => {
+      const url = URL.createObjectURL(blob);
+      const a = el("a", { href: url, download: name });
       document.body.append(a); a.click(); a.remove();
       setTimeout(() => URL.revokeObjectURL(url), 1000);
+    };
+    dl.addEventListener("click", () => { if (svgText) save(new Blob([svgText], { type: "image/svg+xml" }), fileName + ".svg"); });
+    dlPng.addEventListener("click", async () => {
+      if (!svgText) return;
+      const dpi = 1200, name = fileName + ".png";
+      const { svg, width, height } = C.svgForRaster(svgText, dpi);
+      const img = new Image();
+      img.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+      await img.decode();
+      const cv = document.createElement("canvas");
+      cv.width = width; cv.height = height;
+      cv.getContext("2d").drawImage(img, 0, 0, width, height);
+      const blob = await new Promise((ok) => cv.toBlob(ok, "image/png"));
+      const png = C.pngWithDpi(new Uint8Array(await blob.arrayBuffer()), dpi);
+      save(new Blob([png], { type: "image/png" }), name);
     });
     isbnIn.addEventListener("input", update);
     addonIn.addEventListener("input", update);
@@ -266,19 +297,30 @@
         el("div", { class: "field wide" }, el("label", { for: "isbn" }, T.isbn), isbnIn),
         el("div", { class: "field" }, el("label", { for: "addon" }, T.addon), addonIn),
         el("div", { class: "field sw" }, sw)),
-      msg, out, el("div", { class: "actions" }, dl));
+      msg, out, el("div", { class: "actions" }, dl, dlPng));
   }
 
   // ── Shell ───────────────────────────────────────────────────────────────
+  // Popup footer: the two ways on, ShelfPublisher (publish, distribution) and Bookfairy (the tools).
+  function promo() {
+    const way = (cls, name, text, url) => el("a", { class: "way " + cls, href: utm(url, name.toLowerCase()), target: "_blank",
+      rel: "noopener" }, el("img", { src: `brands/${name.toLowerCase()}.svg`, width: "24", height: "24", alt: "" }),
+      el("span", { class: "way-t" }, el("strong", null, name), el("span", null, text)),
+      el("span", { class: "way-go", "aria-hidden": "true" }));
+    return el("nav", { class: "promo", "aria-label": T.promoHead }, el("p", { class: "promo-h" }, T.promoHead),
+      way("shelf", "ShelfPublisher", T.promoShelf, T.urlShelf), way("fairy", "Bookfairy", T.promoFairy, T.urlFairy));
+  }
+
   function render() {
     closeList();
-    const tabs = el("div", { class: "tabs", role: "tablist" },
-      [["cover", T.tabCover], ["isbn", T.tabIsbn]].map(([k, l]) => el("button", { type: "button", role: "tab",
-        "aria-selected": state.tab === k ? "true" : "false", class: state.tab === k ? "on" : "",
-        onclick: () => { state.tab = k; render(); } }, l)));
+    const head = isbnOnly ? el("div", { class: "tool-h" }, el("h1", null, T.title), el("p", null, T.lead))
+      : el("div", { class: "tabs", role: "tablist" },
+        [["cover", T.tabCover], ["isbn", T.tabIsbn]].map(([k, l]) => el("button", { type: "button", role: "tab",
+          "aria-selected": state.tab === k ? "true" : "false", class: state.tab === k ? "on" : "",
+          onclick: () => { state.tab = k; render(); } }, l)));
     const body = state.tab === "cover" ? coverTab() : isbnTab();
-    const cta = el("p", { class: "cta" }, linkify(T.cta));
-    const swap = () => root.replaceChildren(tabs, body, cta);
+    const foot = campaign ? promo() : el("p", { class: "cta" }, linkify(T.cta));
+    const swap = () => root.replaceChildren(head, body, foot);
     if (document.startViewTransition && root.childElementCount) document.startViewTransition(swap); else swap();
   }
   render();

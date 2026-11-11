@@ -3,7 +3,7 @@
   "name": "__MSG_name__",
   "short_name": "__MSG_short__",
   "description": "__MSG_desc__",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "default_locale": "en",
   "action": {
     "default_title": "__MSG_short__",
