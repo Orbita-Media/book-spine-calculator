@@ -57,4 +57,4 @@ Ebenfalls von uns: Buchrücken-Rechner & ISBN-Barcode – ShelfPublisher, für R
 ## Publisher
 - Developer account: Orbita Media GmbH (publisher ID 89cecae7-b072-4478-a49e-38b6529ba849), see `store/LISTING.md`
 - Official URL: shelfpublisher.com (verified site)
-- Item ID: (after the upload)
+- Item ID: nfgjobkjiidgebfmjohbmaldliibkkdj (submitted for review 2026-11-11, version 1.0.0, status "Überprüfung ausstehend", auto-publish after approval)
