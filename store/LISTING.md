@@ -57,3 +57,4 @@ Ebenfalls von uns: ISBN-Barcode-Generator – ShelfPublisher, nur der Barcode.
 - Item ID: cklbcmnmdbppgflochaigdpjpddencbl, store page after approval: https://chromewebstore.google.com/detail/cklbcmnmdbppgflochaigdpjpddencbl
 - Submitted for review on 2026-11-09 with version 1.0.1, published automatically after approval (live since)
 - Version 1.0.2 (2026-11-11): PNG download at 1200 dpi, popup footer with ShelfPublisher and Bookfairy (UTM campaign `spine-calculator`), listing names both brands
+- Version 1.0.2 submitted for review on 2026-11-11 (new package, EN/DE description and screenshots replaced), status "Überprüfung ausstehend", auto-publish after approval
